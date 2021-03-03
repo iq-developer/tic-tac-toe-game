@@ -26,11 +26,11 @@ body {
 }
 .x {
   font-size: 12vh;
-  font-weight: bold;
   color: #4862a3;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 .o {
+  font-size: 12vh;
   color: #4862a3;
   transition: 1s;
 }
