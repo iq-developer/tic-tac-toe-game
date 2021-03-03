@@ -73,6 +73,9 @@ h1 {
   text-decoration: none!important;
   transition: 0.5s;
 }
+.footer {
+  padding: 20px 0;
+}
 
 @media (max-width: 650px) {
   body {

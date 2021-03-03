@@ -122,11 +122,11 @@ class App extends React.Component {
     return (
     <div className="wrapper">
       <div className="header">
-        <h1>Tic-tac-toe game</h1> 
+        <h1>Tic-tac-toe React game</h1> 
       </div>
       <div id="btnfullscreen" onClick={this.fullscreen.bind(this, document.documentElement)}>Fullscreen on/off</div>
       <div id="message" className="disabled" onClick={this.playAgain.bind(this)}>{this.state.message}</div>
-         <div className="field">
+        <div className="field">
         <button className="bar" onClick={this.play.bind(this)}></button>
         <button className="bar" onClick={this.play.bind(this)}></button>
         <button className="bar" onClick={this.play.bind(this)}></button>
@@ -138,7 +138,8 @@ class App extends React.Component {
         <button className="bar" onClick={this.play.bind(this)}></button>
       </div>
       <div className="footer">
-
+      
+      This game developed in 2021 by <a href="https://github.com/iq-developer">Vladimir Sevastianov</a> at <a href="https://rs.school/js/"><img src="https://rs.school/images/rs_school_js.svg" width="100" /></a>  
       </div>
     </div>
     );
