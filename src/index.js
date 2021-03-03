@@ -139,7 +139,7 @@ class App extends React.Component {
       </div>
       <div className="footer">
       
-      This game developed in 2021 by <a href="https://github.com/iq-developer">Vladimir Sevastianov</a> at <a href="https://rs.school/js/"><img src="https://rs.school/images/rs_school_js.svg" width="100" /></a>  
+      This game developed in 2021 by <a href="https://github.com/iq-developer">Vladimir Sevastianov</a> at <a href="https://rs.school/js/"><img alt="RS School logo" src="https://rs.school/images/rs_school_js.svg" width="100" /></a>  
       </div>
     </div>
     );
