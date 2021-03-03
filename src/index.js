@@ -5,7 +5,7 @@ import './index.css';
 class App extends React.Component {
 
   play(event) {
-    console.log(event.target);
+
     if (event.target.innerHTML === '✖' || event.target.innerHTML === '⭘'){
       alert('This place is already occupied. Try another one.');
       return;
@@ -14,9 +14,23 @@ class App extends React.Component {
       event.target.classList.add('x');
     }
 
-    // Нолики случайным образом
+    let buttons = document.querySelectorAll('button');
+    if (
+        (buttons[0].innerHTML === '✖' && buttons[1].innerHTML === '✖' && buttons[2].innerHTML === '✖') ||
+        (buttons[3].innerHTML === '✖' && buttons[4].innerHTML === '✖' && buttons[5].innerHTML === '✖') ||
+        (buttons[6].innerHTML === '✖' && buttons[7].innerHTML === '✖' && buttons[8].innerHTML === '✖') ||
+        (buttons[0].innerHTML === '✖' && buttons[3].innerHTML === '✖' && buttons[6].innerHTML === '✖') ||
+        (buttons[1].innerHTML === '✖' && buttons[4].innerHTML === '✖' && buttons[7].innerHTML === '✖') ||
+        (buttons[2].innerHTML === '✖' && buttons[5].innerHTML === '✖' && buttons[8].innerHTML === '✖') ||
+        (buttons[0].innerHTML === '✖' && buttons[4].innerHTML === '✖' && buttons[8].innerHTML === '✖') ||
+        (buttons[2].innerHTML === '✖' && buttons[4].innerHTML === '✖' && buttons[6].innerHTML === '✖')
+        ) {
+      alert('X wins!');
+      return;
+    }
+
+    // Add ⭘ randomly
     function nolls() {
-      let buttons = document.querySelectorAll('button');
       let emptyCells = Array.from(buttons).filter(item => item.innerHTML === '&nbsp;');
       let randomCell = randomInteger(0, emptyCells.length-1);
       console.log({randomCell}, emptyCells.length-1);
@@ -26,6 +40,7 @@ class App extends React.Component {
         emptyCells[randomCell].classList.add('o');
       }
     }
+
     nolls();
 
     function randomInteger(min, max) {
@@ -41,6 +56,7 @@ class App extends React.Component {
       <div className="header">
         <h1>Tic-tac-toe game</h1>
       </div>
+      <div id="messages"></div>
       <div className="field">
         <button className="bar" onClick={this.play.bind(this)}>&nbsp;</button>
         <button className="bar" onClick={this.play.bind(this)}>&nbsp;</button>
