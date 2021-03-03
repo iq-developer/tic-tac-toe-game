@@ -1,0 +1,28 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+.field {
+  width: 50%;
+  display: grid;
+  grid-template: repeat(3, 30vw) / repeat(3, 30vw);
+}
+.bar {
+  font-size: 20vw;
+  font-weight: bold;
+  border: 1px solid #999;
+  color: #4862a3;
+  background: #fff;
+  margin: 1px;
+}
+.bar:focus {
+  outline: none;
+}
+.x {
+  color: #4862a3;
+  transition: 0.2s;
+}
+.o {
+  color: #4862a3;
+  transition: 1s;
+}
