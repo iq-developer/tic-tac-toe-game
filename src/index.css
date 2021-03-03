@@ -39,21 +39,25 @@ body {
   padding: 20px 40px;
   margin: 20px;
   border-radius: 10px;
-  font-size: 5em;
+  font-size: 2em;
+  text-decoration: underline;
 }
+
 .win {
   border: 3px solid #77a577;
   color: #3c763d;
   background-color: #dff0d8;
-  font-size: 2em!important;
-  transition: 0.3s;
+  font-size: 4em;
+  text-decoration: none!important;
+  transition: 0.5s;
 }
 .loose {
   border: 3px solid #c07e7e;
   color: #763c3c;
   background-color: #f0d8d8;
-  font-size: 2em!important;
-  transition: 0.3s;
+  font-size: 4em;
+  text-decoration: none!important;
+  transition: 0.5s;
 }
 
 @media (max-width: 650px) {

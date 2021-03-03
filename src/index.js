@@ -27,8 +27,8 @@ class App extends React.Component {
         (buttons[0].innerHTML === '✖' && buttons[4].innerHTML === '✖' && buttons[8].innerHTML === '✖') ||
         (buttons[2].innerHTML === '✖' && buttons[4].innerHTML === '✖' && buttons[6].innerHTML === '✖')
         ) {
-      message.className = 'win';
-      message.innerHTML = '✖ wins';
+      message.classList.add('win');
+      message.innerHTML = '✖ wins. Play again?';
       return;
     }
 
@@ -53,8 +53,8 @@ class App extends React.Component {
         (buttons[0].innerHTML === '⭘' && buttons[4].innerHTML === '⭘' && buttons[8].innerHTML === '⭘') ||
         (buttons[2].innerHTML === '⭘' && buttons[4].innerHTML === '⭘' && buttons[6].innerHTML === '⭘')
         ) {
-      message.className = 'loose';
-      message.innerHTML = '⭘ wins';
+      message.classList.add('loose');
+      message.innerHTML = '⭘ wins. Play again?';
       return;
     }
     }
@@ -68,13 +68,17 @@ class App extends React.Component {
 
   }
 
+  playAgain() {
+    alert('Not implement :) Please reload page if you wish to play again');
+  }
+
   render() {
     return (
     <div className="wrapper">
       <div className="header">
         <h1>Tic-tac-toe game</h1>
       </div>
-      <div id="message"></div>
+      <div id="message" className="normal" onClick={this.playAgain.bind(this)}>Play again</div>
       <div className="field">
         <button className="bar" onClick={this.play.bind(this)}>&nbsp;</button>
         <button className="bar" onClick={this.play.bind(this)}>&nbsp;</button>
