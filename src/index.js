@@ -15,6 +15,8 @@ class App extends React.Component {
     }
 
     let buttons = document.querySelectorAll('button');
+    let message = document.querySelector('#message');
+
     if (
         (buttons[0].innerHTML === '✖' && buttons[1].innerHTML === '✖' && buttons[2].innerHTML === '✖') ||
         (buttons[3].innerHTML === '✖' && buttons[4].innerHTML === '✖' && buttons[5].innerHTML === '✖') ||
@@ -25,7 +27,8 @@ class App extends React.Component {
         (buttons[0].innerHTML === '✖' && buttons[4].innerHTML === '✖' && buttons[8].innerHTML === '✖') ||
         (buttons[2].innerHTML === '✖' && buttons[4].innerHTML === '✖' && buttons[6].innerHTML === '✖')
         ) {
-      alert('X wins!');
+      message.className = 'win';
+      message.innerHTML = '✖ wins';
       return;
     }
 
@@ -39,6 +42,21 @@ class App extends React.Component {
         emptyCells[randomCell].innerHTML = '⭘';
         emptyCells[randomCell].classList.add('o');
       }
+
+      if (
+        (buttons[0].innerHTML === '⭘' && buttons[1].innerHTML === '⭘' && buttons[2].innerHTML === '⭘') ||
+        (buttons[3].innerHTML === '⭘' && buttons[4].innerHTML === '⭘' && buttons[5].innerHTML === '⭘') ||
+        (buttons[6].innerHTML === '⭘' && buttons[7].innerHTML === '⭘' && buttons[8].innerHTML === '⭘') ||
+        (buttons[0].innerHTML === '⭘' && buttons[3].innerHTML === '⭘' && buttons[6].innerHTML === '⭘') ||
+        (buttons[1].innerHTML === '⭘' && buttons[4].innerHTML === '⭘' && buttons[7].innerHTML === '⭘') ||
+        (buttons[2].innerHTML === '⭘' && buttons[5].innerHTML === '⭘' && buttons[8].innerHTML === '⭘') ||
+        (buttons[0].innerHTML === '⭘' && buttons[4].innerHTML === '⭘' && buttons[8].innerHTML === '⭘') ||
+        (buttons[2].innerHTML === '⭘' && buttons[4].innerHTML === '⭘' && buttons[6].innerHTML === '⭘')
+        ) {
+      message.className = 'loose';
+      message.innerHTML = '⭘ wins';
+      return;
+    }
     }
 
     nolls();
@@ -56,7 +74,7 @@ class App extends React.Component {
       <div className="header">
         <h1>Tic-tac-toe game</h1>
       </div>
-      <div id="messages"></div>
+      <div id="message"></div>
       <div className="field">
         <button className="bar" onClick={this.play.bind(this)}>&nbsp;</button>
         <button className="bar" onClick={this.play.bind(this)}>&nbsp;</button>
