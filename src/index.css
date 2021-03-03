@@ -2,27 +2,47 @@ body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
 }
+.wrapper {
+  width: 610px;
+  margin: 10px auto;
+  text-align: center;
+  color: #333333;
+}
 .field {
-  width: 50%;
   display: grid;
-  grid-template: repeat(3, 30vw) / repeat(3, 30vw);
+  grid-template: repeat(3, 20vh) / repeat(3, 20vh);
 }
 .bar {
-  font-size: 20vw;
+  font-size: 30vh;
   font-weight: bold;
   border: 1px solid #999;
-  color: #4862a3;
+  color: #fff;
   background: #fff;
   margin: 1px;
 }
-.bar:focus {
+.bar:focus, .bar:active {
   outline: none;
+  background: none;
 }
 .x {
+  font-size: 12vh;
+  font-weight: bold;
   color: #4862a3;
-  transition: 0.2s;
+  transition: 0.5s;
 }
 .o {
   color: #4862a3;
   transition: 1s;
+}
+
+@media (max-width: 650px) {
+  body {
+    margin: 0;
+  }
+  .wrapper {
+    width: 100%;
+  }
+  .field {
+    grid-template: repeat(3, 33.3vw) / repeat(3, 33.3vw);
+  }
 }
