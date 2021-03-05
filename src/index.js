@@ -15,6 +15,7 @@ function App1() {
       <div id="btnfullscreen" onClick={fullscreen}>Fullscreen on/off</div>
       <div id="message" className="disabled" onClick={playAgain}>{message}</div>
         <div className="field">
+
         <button className="bar" onClick={play}></button>
         <button className="bar" onClick={play}></button>
         <button className="bar" onClick={play}></button>
@@ -26,7 +27,6 @@ function App1() {
         <button className="bar" onClick={play}></button>
       </div>
       <Footer />
-
     </div>
   );
 
@@ -100,16 +100,50 @@ function App1() {
   }
 
   function playAgain() {
+    let buttons = document.querySelectorAll('button');
+    buttons.forEach(item => {
+      item.innerHTML = '';
+      item.className = 'bar';
+    });
+    let message = document.querySelector('#message');
+    message.className = 'disabled';
+    setMessage('Play again');
+    setIsFinished(false);
   }
 
   function fullscreen() {
+
+    let elem = document.documentElement;
+    if (!document.fullscreenElement && !document.mozFullScreenElement &&
+      !document.webkitFullscreenElement && !document.msFullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
   }
+
 }
 
 function Footer() {
   return (
     <div className="footer">
-      This game developed in 2021 by <a href="https://github.com/iq-developer">Vladimir Sevastianov</a> at <a href="https://rs.school/js/"><img alt="RS School logo" src="https://rs.school/images/rs_school_js.svg" width="100" /></a>
+      <p>This game developed in 2021 by <a href="https://github.com/iq-developer">Vladimir Sevastianov</a> at <a href="https://rs.school/js/"><img alt="RS School logo" src="https://rs.school/images/rs_school_js.svg" width="100" /></a></p>
     </div>
   );
 }
