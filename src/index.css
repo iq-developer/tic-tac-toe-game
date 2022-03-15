@@ -1,5 +1,5 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  font: 14px 'Century Gothic', Futura, sans-serif;
   margin: 20px;
 }
 h1 {
@@ -18,12 +18,16 @@ h1 {
   font-size: 30vh;
   font-weight: bold;
   border: 1px solid #999;
-  color: #fff;
+  /* color: #fff; */
+  color: #000;
+  font-size: 16px;
+
   background: #fff;
   margin: 1px;
   cursor: pointer;
 }
-.bar:focus, .bar:active {
+.bar:focus,
+.bar:active {
   outline: none;
   background: none;
 }
@@ -43,7 +47,8 @@ h1 {
 .disabled {
   color: #ccc;
 }
-#message, #btnfullscreen {
+#message,
+#btnfullscreen {
   display: inline-block;
   margin: 0 70px 50px 0;
   border-radius: 10px;
@@ -52,7 +57,6 @@ h1 {
   cursor: pointer;
 }
 
-
 .win {
   padding: 20px 40px;
   margin: 20px;
@@ -60,7 +64,7 @@ h1 {
   color: #3c763d;
   background-color: #dff0d8;
   font-size: 4em;
-  text-decoration: none!important;
+  text-decoration: none !important;
   transition: 0.5s;
 }
 .loose {
@@ -70,7 +74,7 @@ h1 {
   color: #763c3c;
   background-color: #f0d8d8;
   font-size: 4em;
-  text-decoration: none!important;
+  text-decoration: none !important;
   transition: 0.5s;
 }
 .footer {
