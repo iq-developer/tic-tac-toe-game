@@ -1,10 +1,11 @@
 import './index.css';
+import isWin from './helpers/isWin';
 
 const Button = ({ state, setState, id, value, isRobotStep, setIsRobotStep }) => {
 
   const handleButtonClick = () => {
 
-    setState(state.map(item => {
+    const newState = state.map(item => {
       if ((item.id === id) && !value) {
         return (
           { ...item, value: 'X' }
@@ -13,7 +14,9 @@ const Button = ({ state, setState, id, value, isRobotStep, setIsRobotStep }) => 
       return (
         { ...item }
       )
-    }));
+    })
+
+    setState(newState);
 
     setIsRobotStep(true);
   }

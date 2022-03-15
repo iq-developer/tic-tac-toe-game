@@ -4,33 +4,49 @@ import Footer from './Footer';
 import Buttons from './Buttons';
 import data from "./helpers/data";
 import { useState, useEffect } from 'react';
-import randomInteger from './helpers/randomInteger'
+import randomInteger from './helpers/randomInteger';
+import isWin from './helpers/isWin';
+import fullscreen from './helpers/fullscreen';
 
 function App() {
   const [message, setMessage] = useState('Play again');
   const [isFinished, setIsFinished] = useState(false);
   const [state, setState] = useState(data());
   const [isRobotStep, setIsRobotStep] = useState(false);
+  const [messageClassName, setMessageClassName] = useState('disabled');
 
   if (isRobotStep) {
-    console.log('isRobotStep: ', isRobotStep);
-    const emptyCells = state.filter(item => !item.value);
-    const randomCellNumber = randomInteger(0, emptyCells.length - 1);
 
+    if (isWin(state, 'X')) {
+      setMessageClassName('win');
+      setMessage('X wins. Play again?');
+      setIsFinished(true);
+    } else {
 
-    setState(state.map(item => {
-      if (item.id === emptyCells[randomCellNumber].id) {
+      const emptyCells = state.filter(item => !item.value);
+      const randomCellNumber = randomInteger(0, emptyCells.length - 1);
+
+      setState(state.map(item => {
+        if (item.id === emptyCells[randomCellNumber].id) {
+          return (
+            { ...item, value: 'O' }
+          )
+        }
         return (
-          { ...item, value: 'O' }
+          { ...item }
         )
-      }
-      return (
-        { ...item }
-      )
-    }));
+      }));
 
+      if (isWin(state, 'O')) {
+        setMessageClassName('loose');
+        setMessage('O wins. Play again?');
+        setIsFinished(true);
+      }
+
+    }
     setIsRobotStep(false);
   }
+
 
   return (
     <div className="wrapper">
@@ -38,7 +54,7 @@ function App() {
         <h1>Tic-tac-toe React game</h1>
       </div>
       <div id="btnfullscreen" onClick={fullscreen}>Fullscreen on/off</div>
-      <div id="message" className="disabled" onClick={playAgain}>{message}</div>
+      <div id="message" className={messageClassName} onClick={playAgain}>{message}</div>
       <div className="field">
         <Buttons state={state} setState={setState} isRobotStep={isRobotStep} setIsRobotStep={setIsRobotStep} />
       </div>
@@ -47,57 +63,13 @@ function App() {
   );
 
 
-
-
-
-
-
-
-
-
-
-
-
   function playAgain() {
-    let buttons = document.querySelectorAll('button');
-    buttons.forEach(item => {
-      item.innerHTML = '';
-      item.className = 'bar';
-    });
-    let message = document.querySelector('#message');
-    message.className = 'disabled';
     setMessage('Play again');
+    setMessageClassName('disabled');
     setIsFinished(false);
   }
 
 
-
-  function fullscreen() {
-
-    let elem = document.documentElement;
-    if (!document.fullscreenElement && !document.mozFullScreenElement &&
-      !document.webkitFullscreenElement && !document.msFullscreenElement) {
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
-      } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-      }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      }
-    }
-  }
 
 }
 

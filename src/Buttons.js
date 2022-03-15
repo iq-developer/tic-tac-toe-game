@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-const Buttons = ({state, setState, isRobotStep, setIsRobotStep}) => {
+const Buttons = ({state, setState, isRobotStep, setIsRobotStep={setIsRobotStep}}) => {
 
   return (
     state.map(item => {
