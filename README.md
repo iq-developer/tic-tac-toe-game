@@ -1,6 +1,6 @@
 # Tic-tac-toe React game
 
-## demo: https://iq-developer.github.io/react-game/
+### demo: https://iq-developer.github.io/react-game/
 
 ### `npm start`
 Runs the app in the development mode.\
@@ -22,9 +22,9 @@ The line can be by vertical, horizontal or diagonal axis.
 
 # Игра "Крестики-нолики" на Реакте
 
-## демо: https://iq-developer.github.io/react-game/
+### демо: https://iq-developer.github.io/react-game/
 
-### : `npm start`
+### `npm start`
 Чтобы запустить приложение локально в режиме разработки.\
 Открыть [http://localhost:3000](http://localhost:3000) чтобы посмотреть в браузере
 
@@ -39,8 +39,3 @@ The line can be by vertical, horizontal or diagonal axis.
 Выигрывает тот, кому удается первому поставить 3 своих фигуры (крестики или нолики) в одну линию.
 
 Линия может быть по вертикали, по горизонтали или по диагонали.
-
-
-
-
-
