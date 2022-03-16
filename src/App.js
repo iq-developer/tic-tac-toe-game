@@ -13,7 +13,7 @@ function App() {
   const [isFinished, setIsFinished] = useState(false);
   const [state, setState] = useState(data());
   const [isRobotStep, setIsRobotStep] = useState(false);
-  const [messageClassName, setMessageClassName] = useState('disabled');
+  const [messageClassName, setMessageClassName] = useState('');
 
   if (isRobotStep) {
 
