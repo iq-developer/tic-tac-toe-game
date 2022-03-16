@@ -4,16 +4,12 @@ const Button = ({ state, setState, id, value, setIsRobotStep, isFinished }) => {
 
   const handleButtonClick = () => {
 
-    const isOccupied = (state, id) => {
-      return state.find(item => (item.id === id) && value);
-    }
-
-    if (isOccupied(state, id)) {
+    if (state.find(item => (item.id === id) && value)) {
       alert('This place is already occupied. Try another one.');
       return;
     }
 
-    const newState = state.map(item => {
+    setState(state.map(item => {
       if (item.id === id) {
         return (
           { ...item, value: '✖' }
@@ -22,9 +18,7 @@ const Button = ({ state, setState, id, value, setIsRobotStep, isFinished }) => {
       return (
         { ...item }
       )
-    })
-
-    setState(newState);
+    }));
 
     setIsRobotStep(true);
   }

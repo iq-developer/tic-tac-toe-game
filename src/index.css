@@ -47,6 +47,7 @@ h1 {
   color: #ccc;
   font-size: 12vh;
   font-weight: bold;
+  font-family: 'Century Gothic', Futura, sans-serif;
 }
 #message,
 #btnfullscreen {

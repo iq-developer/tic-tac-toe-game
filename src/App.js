@@ -3,7 +3,7 @@ import './index.css';
 import Footer from './Footer';
 import Buttons from './Buttons';
 import data from "./helpers/data";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import randomInteger from './helpers/randomInteger';
 import isWin from './helpers/isWin';
 import fullscreen from './helpers/fullscreen';
@@ -78,10 +78,9 @@ function App() {
     </div>
   );
 
-
   function playAgain(state) {
     setMessage('Play again');
-    setMessageClassName('disabled');
+    setMessageClassName('');
     setIsFinished(false);
     setState(state.map(item => {
       return (
@@ -89,8 +88,6 @@ function App() {
       )
     }));
   }
-
-
 
 }
 
