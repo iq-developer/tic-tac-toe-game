@@ -18,13 +18,10 @@ h1 {
   font-size: 30vh;
   font-weight: bold;
   border: 1px solid #999;
-  /* color: #fff; */
-  color: #000;
-  font-size: 26px;
-
   background: #fff;
   margin: 1px;
   cursor: pointer;
+  color: #fff;
 }
 .bar:focus,
 .bar:active {
@@ -34,18 +31,20 @@ h1 {
 .bar:hover {
   background: #f4f7ff;
 }
-.x {
+.✖ {
   font-size: 12vh;
   color: #4862a3;
   transition: 0.3s;
 }
-.o {
+.O {
   font-size: 12vh;
-  color: #4862a3;
+  color: #a34848;
   transition: 1s;
+  font-weight: bold;
 }
 .disabled {
   color: #ccc;
+  font-size: 12vh;
 }
 #message,
 #btnfullscreen {

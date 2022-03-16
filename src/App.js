@@ -17,7 +17,7 @@ function App() {
 
   if (isRobotStep) {
 
-    if (isWin(state, 'X')) {
+    if (isWin(state, '✖')) {
       setMessageClassName('win');
       setMessage('X wins. Play again?');
       setIsFinished(true);
@@ -85,7 +85,7 @@ function App() {
     setIsFinished(false);
     setState(state.map(item => {
       return (
-        { ...item, value: null }
+        { ...item, value: '' }
       )
     }));
   }

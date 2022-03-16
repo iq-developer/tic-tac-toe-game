@@ -16,7 +16,7 @@ const Button = ({ state, setState, id, value, setIsRobotStep, isFinished }) => {
     const newState = state.map(item => {
       if (item.id === id) {
         return (
-          { ...item, value: 'X' }
+          { ...item, value: '✖' }
         )
       }
       return (
@@ -30,7 +30,7 @@ const Button = ({ state, setState, id, value, setIsRobotStep, isFinished }) => {
   }
 
   return (
-    <button className={isFinished ? "disabled" : "bar"} onClick={handleButtonClick} >{value}</button>
+    <button className={isFinished ? "disabled" : "bar " + value} onClick={handleButtonClick} >{value}</button>
   )
 
 }
