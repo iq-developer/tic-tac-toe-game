@@ -17,8 +17,10 @@ function App() {
 
   if (isRobotStep) {
 
-    if (checkWin(state, '✖').length) {
-      setState(checkWin(state, '✖'));
+    const checkWinX = checkWin(state, '✖');
+
+    if (checkWinX.length) {
+      setState(checkWinX);
       setMessageClassName('win');
       setMessage('✖ wins. Play again?');
       setIsFinished(true);
@@ -47,8 +49,10 @@ function App() {
 
         setState(newState);
 
-        if (checkWin(newState, 'O').length) {
-          setState(checkWin(newState, 'O'));
+        const checkWinO = checkWin(state, 'O');
+
+        if (checkWinO.length) {
+          setState(checkWinO);
           setMessageClassName('loose');
           setMessage('O wins. Play again?');
           setIsFinished(true);
