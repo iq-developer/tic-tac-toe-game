@@ -1,6 +1,6 @@
 import './index.css';
 
-const Button = ({ state, setState, id, value, setIsRobotStep, isFinished }) => {
+const Button = ({ state, setState, id, value, marked, setIsRobotStep, isFinished }) => {
 
   const handleButtonClick = () => {
 
@@ -24,7 +24,7 @@ const Button = ({ state, setState, id, value, setIsRobotStep, isFinished }) => {
   }
 
   return (
-    <button className={isFinished ? "disabled" : "bar " + value} onClick={handleButtonClick} >{value}</button>
+    <button className={isFinished ? "disabled " + marked : "bar " + value} disabled={isFinished} onClick={handleButtonClick} >{value}</button>
   )
 
 }

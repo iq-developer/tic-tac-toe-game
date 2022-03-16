@@ -5,7 +5,7 @@ import Buttons from './Buttons';
 import data from "./helpers/data";
 import { useState } from 'react';
 import randomInteger from './helpers/randomInteger';
-import isWin from './helpers/isWin';
+import checkWin from './helpers/checkWin';
 import fullscreen from './helpers/fullscreen';
 
 function App() {
@@ -17,9 +17,10 @@ function App() {
 
   if (isRobotStep) {
 
-    if (isWin(state, '✖')) {
+    if (checkWin(state, '✖').length) {
+      setState(checkWin(state, '✖'));
       setMessageClassName('win');
-      setMessage('X wins. Play again?');
+      setMessage('✖ wins. Play again?');
       setIsFinished(true);
     } else {
 
@@ -46,7 +47,8 @@ function App() {
 
         setState(newState);
 
-        if (isWin(newState, 'O')) {
+        if (checkWin(newState, 'O').length) {
+          setState(checkWin(newState, 'O'));
           setMessageClassName('loose');
           setMessage('O wins. Play again?');
           setIsFinished(true);
@@ -79,14 +81,11 @@ function App() {
   );
 
   function playAgain(state) {
+    setState(checkWin(state, 'O'));
     setMessage('Play again');
     setMessageClassName('');
     setIsFinished(false);
-    setState(state.map(item => {
-      return (
-        { ...item, value: '' }
-      )
-    }));
+    setState(data());
   }
 
 }

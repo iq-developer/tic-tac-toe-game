@@ -49,6 +49,9 @@ h1 {
   font-weight: bold;
   font-family: 'Century Gothic', Futura, sans-serif;
 }
+.marked {
+  color: #333333;
+}
 #message,
 #btnfullscreen {
   display: inline-block;
@@ -57,6 +60,7 @@ h1 {
   font-size: 2em;
   text-decoration: underline;
   cursor: pointer;
+  font-family: 'Century Gothic', Futura, sans-serif;
 }
 
 .win {

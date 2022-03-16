@@ -8,6 +8,7 @@ const Buttons = ({state, setState, isRobotStep, setIsRobotStep, isFinished}) => 
         key={item.id}
         value={item.value}
         id={item.id}
+        marked={item.marked}
         state={state}
         setState={setState}
         isRobotStep={isRobotStep}
