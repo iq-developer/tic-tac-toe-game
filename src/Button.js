@@ -1,7 +1,6 @@
 import './index.css';
-import isWin from './helpers/isWin';
 
-const Button = ({ state, setState, id, value, isRobotStep, setIsRobotStep }) => {
+const Button = ({ state, setState, id, value, setIsRobotStep, isFinished }) => {
 
   const handleButtonClick = () => {
 
@@ -31,7 +30,7 @@ const Button = ({ state, setState, id, value, isRobotStep, setIsRobotStep }) => 
   }
 
   return (
-    <button className="bar" onClick={handleButtonClick} >{value}</button>
+    <button className={isFinished ? "disabled" : "bar"} onClick={handleButtonClick} >{value}</button>
   )
 
 }

@@ -26,7 +26,7 @@ function App() {
       const emptyCells = state.filter(item => !item.value);
       const randomCellNumber = randomInteger(0, emptyCells.length - 1);
 
-      setState(state.map(item => {
+      const newState = (state.map(item => {
         if (item.id === emptyCells[randomCellNumber].id) {
           return (
             { ...item, value: 'O' }
@@ -37,7 +37,9 @@ function App() {
         )
       }));
 
-      if (isWin(state, 'O')) {
+      setState(newState);
+
+      if (isWin(newState, 'O')) {
         setMessageClassName('loose');
         setMessage('O wins. Play again?');
         setIsFinished(true);
@@ -54,19 +56,30 @@ function App() {
         <h1>Tic-tac-toe React game</h1>
       </div>
       <div id="btnfullscreen" onClick={fullscreen}>Fullscreen on/off</div>
-      <div id="message" className={messageClassName} onClick={playAgain}>{message}</div>
+      <div id="message" className={messageClassName} onClick={() => playAgain(state)}>{message}</div>
       <div className="field">
-        <Buttons state={state} setState={setState} isRobotStep={isRobotStep} setIsRobotStep={setIsRobotStep} />
+        <Buttons
+          state={state}
+          setState={setState}
+          isRobotStep={isRobotStep}
+          setIsRobotStep={setIsRobotStep}
+          isFinished={isFinished}
+        />
       </div>
       <Footer />
     </div>
   );
 
 
-  function playAgain() {
+  function playAgain(state) {
     setMessage('Play again');
     setMessageClassName('disabled');
     setIsFinished(false);
+    setState(state.map(item => {
+      return (
+        { ...item, value: null }
+      )
+    }));
   }
 
 
