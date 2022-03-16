@@ -24,25 +24,33 @@ function App() {
     } else {
 
       const emptyCells = state.filter(item => !item.value);
-      const randomCellNumber = randomInteger(0, emptyCells.length - 1);
 
-      const newState = (state.map(item => {
-        if (item.id === emptyCells[randomCellNumber].id) {
-          return (
-            { ...item, value: 'O' }
-          )
-        }
-        return (
-          { ...item }
-        )
-      }));
-
-      setState(newState);
-
-      if (isWin(newState, 'O')) {
+      if (!emptyCells.length) {
         setMessageClassName('loose');
-        setMessage('O wins. Play again?');
+        setMessage('Draw - nobody wins. Play again?');
         setIsFinished(true);
+      } else {
+
+        const randomCellNumber = randomInteger(0, emptyCells.length - 1);
+
+        const newState = (state.map(item => {
+          if (item.id === emptyCells[randomCellNumber].id) {
+            return (
+              { ...item, value: 'O' }
+            )
+          }
+          return (
+            { ...item }
+          )
+        }));
+
+        setState(newState);
+
+        if (isWin(newState, 'O')) {
+          setMessageClassName('loose');
+          setMessage('O wins. Play again?');
+          setIsFinished(true);
+        }
       }
 
     }
