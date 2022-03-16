@@ -1,0 +1,99 @@
+body {
+  font: 14px 'Century Gothic', Futura, sans-serif;
+  margin: 20px;
+}
+h1 {
+  font-size: 3em;
+}
+.wrapper {
+  width: 610px;
+  margin: 10px auto;
+  color: #333333;
+}
+.field {
+  display: grid;
+  grid-template: repeat(3, 20vh) / repeat(3, 20vh);
+}
+.bar {
+  font-size: 30vh;
+  font-family: 'Century Gothic', Futura, sans-serif;
+  font-weight: bold;
+  border: 1px solid #999;
+  background: #fff;
+  margin: 1px;
+  cursor: pointer;
+  color: #fff;
+}
+.bar:focus,
+.bar:active {
+  outline: none;
+  background: none;
+}
+.bar:hover {
+  background: #f4f7ff;
+}
+.✖ {
+  font-size: 12vh;
+  color: #4862a3;
+  transition: 0.3s;
+}
+.O {
+  font-size: 12vh;
+  color: #a34848;
+  transition: 1s;
+  font-weight: bold;
+}
+.disabled {
+  color: #ccc;
+  font-size: 12vh;
+  font-weight: bold;
+  font-family: 'Century Gothic', Futura, sans-serif;
+}
+.marked {
+  color: #333333;
+}
+#message,
+#btnfullscreen {
+  display: inline-block;
+  margin: 0 70px 50px 0;
+  border-radius: 10px;
+  font-size: 2em;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: 'Century Gothic', Futura, sans-serif;
+}
+
+.win,
+.loose {
+  padding: 20px 40px;
+  margin: 20px;
+  font-size: 4em;
+  text-decoration: none !important;
+  transition: 0.7s;
+}
+
+.win {
+  border: 3px solid #4862a3;
+  color: #4862a3;
+  background-color: #dbe5fd;
+}
+.loose {
+  border: 3px solid #a34848;
+  color: #a34848;
+  background-color: #f0d8d8;
+}
+.footer {
+  padding: 20px 0;
+}
+
+@media (max-width: 650px) {
+  body {
+    margin: 0;
+  }
+  .wrapper {
+    width: 100%;
+  }
+  .field {
+    grid-template: repeat(3, 33.3vw) / repeat(3, 33.3vw);
+  }
+}
