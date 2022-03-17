@@ -15,8 +15,6 @@ type StateObject = {
 
 type State = Array<StateObject>;
 
-type CheckWin = Array<Array<number>>;
-
 function App() {
   const [message, setMessage]: [string, Function] = useState('Play again');
   const [isFinished, setIsFinished]: [boolean, Function] = useState(false);
@@ -26,7 +24,7 @@ function App() {
 
   if (isRobotStep) {
 
-    const checkWinX: CheckWin = checkWin(state, '✖');
+    const checkWinX: State = checkWin(state, '✖');
 
     if (checkWinX.length) {
       setState(checkWinX);
@@ -58,7 +56,7 @@ function App() {
 
         setState(newState);
 
-        const checkWinO: CheckWin = checkWin(state, 'O');
+        const checkWinO: State = checkWin(state, 'O');
 
         if (checkWinO.length) {
           setState(checkWinO);
