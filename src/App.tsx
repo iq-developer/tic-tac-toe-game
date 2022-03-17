@@ -1,4 +1,3 @@
-import React from 'react';
 import './index.css';
 import Footer from './Footer';
 import Buttons from './Buttons';
@@ -8,16 +7,26 @@ import randomInteger from './helpers/randomInteger';
 import checkWin from './helpers/checkWin';
 import fullscreen from './helpers/fullscreen';
 
+type StateObject = {
+  id: number,
+  value: string,
+  marked: string,
+};
+
+type State = Array<StateObject>;
+
+type CheckWin = Array<Array<number>>;
+
 function App() {
-  const [message, setMessage] = useState('Play again');
-  const [isFinished, setIsFinished] = useState(false);
-  const [state, setState] = useState(data());
-  const [isRobotStep, setIsRobotStep] = useState(false);
-  const [messageClassName, setMessageClassName] = useState('');
+  const [message, setMessage]: [string, Function] = useState('Play again');
+  const [isFinished, setIsFinished]: [boolean, Function] = useState(false);
+  const [state, setState]: [State, Function] = useState(data());
+  const [isRobotStep, setIsRobotStep]: [boolean, Function] = useState(false);
+  const [messageClassName, setMessageClassName]: [string, Function] = useState('');
 
   if (isRobotStep) {
 
-    const checkWinX = checkWin(state, '✖');
+    const checkWinX: CheckWin = checkWin(state, '✖');
 
     if (checkWinX.length) {
       setState(checkWinX);
@@ -26,7 +35,7 @@ function App() {
       setIsFinished(true);
     } else {
 
-      const emptyCells = state.filter(item => !item.value);
+      const emptyCells: State = state.filter(item => !item.value);
 
       if (!emptyCells.length) {
         setMessageClassName('loose');
@@ -34,9 +43,9 @@ function App() {
         setIsFinished(true);
       } else {
 
-        const randomCellNumber = randomInteger(0, emptyCells.length - 1);
+        const randomCellNumber: number = randomInteger(0, emptyCells.length - 1);
 
-        const newState = (state.map(item => {
+        const newState: State = (state.map(item => {
           if (item.id === emptyCells[randomCellNumber].id) {
             return (
               { ...item, value: 'O' }
@@ -49,7 +58,7 @@ function App() {
 
         setState(newState);
 
-        const checkWinO = checkWin(state, 'O');
+        const checkWinO: CheckWin = checkWin(state, 'O');
 
         if (checkWinO.length) {
           setState(checkWinO);
@@ -84,7 +93,7 @@ function App() {
     </div>
   );
 
-  function playAgain(state) {
+  function playAgain(state: State): void {
     setState(checkWin(state, 'O'));
     setMessage('Play again');
     setMessageClassName('');
