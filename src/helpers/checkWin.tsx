@@ -20,9 +20,15 @@ const checkWin = (state: State, sign: string) => {
       stateClone[item[1]].marked = 'marked';
       stateClone[item[2]].marked = 'marked';
       result = stateClone;
+      console.log('stateClone', stateClone);
 
     }
   });
+
+  console.log('state', state);
+
+  console.log('result', result);
+
 
   return result;
 }

@@ -56,7 +56,7 @@ function App() {
 
         setState(newState);
 
-        const checkWinO: State = checkWin(state, 'O');
+        const checkWinO: State = checkWin(newState, 'O');
 
         if (checkWinO.length) {
           setState(checkWinO);
