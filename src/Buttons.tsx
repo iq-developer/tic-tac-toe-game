@@ -1,15 +1,11 @@
 import Button from "./Button";
+import { StateObjectType } from './helpers/types';
 
-type StateObject = {
-  id: number,
-  value: string,
-  marked: string,
-};
 
 const Buttons = ({state, setState, isRobotStep, setIsRobotStep, isFinished}: any) => {
 
   return (
-    state.map((item: StateObject) => {
+    state.map((item: StateObjectType) => {
       return <Button
         key={item.id}
         value={item.value}

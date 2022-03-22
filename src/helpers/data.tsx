@@ -1,12 +1,6 @@
-type StateObject = {
-  id: number,
-  value: string,
-  marked: string,
-};
+import { StateType } from './types';
 
-type State = Array<StateObject>;
-
-const data = (): State => {
+const data = (): StateType => {
   const arr = [];
   for (let i = 0; i < 9; i++) {
     arr.push({

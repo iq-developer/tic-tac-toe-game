@@ -1,8 +1,8 @@
-var Element_Copy=Element;                         // Magic
-function fullscreen() {
-    var document:any = window.document;           // Magic
-    var Element:any = Element_Copy;               // Magic
-    var fs = Element[0];
+const Element_Copy=Element;                         // Magic
+function fullscreen(): void {
+    const document:any = window.document;           // Magic
+    const Element:any = Element_Copy;               // Magic
+    const fs = Element[0];
     if (!document.fullscreenElement &&    // alternative standard method
         !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {  // current working methods
         if (fs.requestFullscreen) {
