@@ -1,15 +1,17 @@
 import './index.css';
+import { StateObjectType } from './helpers/types';
 
-const Button = ({ state, setState, id, value, marked, setIsRobotStep, isFinished }) => {
 
-  const handleButtonClick = () => {
+const Button = ({ state, setState, id, value, marked, setIsRobotStep, isFinished }: any) => {
 
-    if (state.find(item => (item.id === id) && value)) {
+  const handleButtonClick = (): void => {
+
+    if (state.find((item: StateObjectType) => (item.id === id) && value)) {
       alert('This place is already occupied. Try another one.');
       return;
     }
 
-    setState(state.map(item => {
+    setState(state.map((item: StateObjectType) => {
       if (item.id === id) {
         return (
           { ...item, value: '✖' }

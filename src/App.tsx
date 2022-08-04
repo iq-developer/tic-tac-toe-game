@@ -1,4 +1,3 @@
-import React from 'react';
 import './index.css';
 import Footer from './Footer';
 import Buttons from './Buttons';
@@ -7,17 +6,19 @@ import { useState } from 'react';
 import randomInteger from './helpers/randomInteger';
 import checkWin from './helpers/checkWin';
 import fullscreen from './helpers/fullscreen';
+import { StateType } from './helpers/types';
 
-function App() {
-  const [message, setMessage] = useState('Play again');
-  const [isFinished, setIsFinished] = useState(false);
-  const [state, setState] = useState(data());
-  const [isRobotStep, setIsRobotStep] = useState(false);
-  const [messageClassName, setMessageClassName] = useState('');
+
+const App = () => {
+  const [message, setMessage]: [string, (message: string) => void] = useState('Play again');
+  const [isFinished, setIsFinished]: [boolean, (isFinished: any) => void] = useState(false); //TODO: change any to boolean
+  const [state, setState]: [StateType, (state: StateType) => void] = useState(data());
+  const [isRobotStep, setIsRobotStep]: [boolean, (isRobotStep: any) => void] = useState(false); //TODO: change any to boolean
+  const [messageClassName, setMessageClassName]: [string, (messageClassName: string) => void] = useState('');
 
   if (isRobotStep) {
 
-    const checkWinX = checkWin(state, '✖');
+    const checkWinX: StateType = checkWin(state, '✖');
 
     if (checkWinX.length) {
       setState(checkWinX);
@@ -26,7 +27,7 @@ function App() {
       setIsFinished(true);
     } else {
 
-      const emptyCells = state.filter(item => !item.value);
+      const emptyCells: StateType = state.filter(item => !item.value);
 
       if (!emptyCells.length) {
         setMessageClassName('loose');
@@ -34,9 +35,9 @@ function App() {
         setIsFinished(true);
       } else {
 
-        const randomCellNumber = randomInteger(0, emptyCells.length - 1);
+        const randomCellNumber: number = randomInteger(0, emptyCells.length - 1);
 
-        const newState = (state.map(item => {
+        const newState: StateType = (state.map(item => {
           if (item.id === emptyCells[randomCellNumber].id) {
             return (
               { ...item, value: 'O' }
@@ -49,7 +50,7 @@ function App() {
 
         setState(newState);
 
-        const checkWinO = checkWin(state, 'O');
+        const checkWinO: StateType = checkWin(newState, 'O');
 
         if (checkWinO.length) {
           setState(checkWinO);
@@ -84,7 +85,7 @@ function App() {
     </div>
   );
 
-  function playAgain(state) {
+  function playAgain(state: StateType): void {
     setState(checkWin(state, 'O'));
     setMessage('Play again');
     setMessageClassName('');
