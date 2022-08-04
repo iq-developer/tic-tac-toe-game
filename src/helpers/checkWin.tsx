@@ -8,21 +8,13 @@ const checkWin = (state: StateType, sign: string) => {
 
   winPositions.forEach((item: [number, number, number]): void => {
     if ((state[item[0]].value === sign) && (state[item[1]].value === sign) && (state[item[2]].value === sign)) {
-
       const stateClone: StateType = state.map((elem: StateObjectType): StateObjectType => ({ ...elem }));
       stateClone[item[0]].marked = 'marked';
       stateClone[item[1]].marked = 'marked';
       stateClone[item[2]].marked = 'marked';
       result = stateClone;
-      console.log('stateClone', stateClone);
-
     }
   });
-
-  console.log('state', state);
-
-  console.log('result', result);
-
 
   return result;
 }

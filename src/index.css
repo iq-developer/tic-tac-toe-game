@@ -64,7 +64,8 @@ h1 {
 }
 
 .win,
-.loose {
+.loose,
+.draw {
   padding: 20px 40px;
   margin: 20px;
   font-size: 4em;
@@ -81,6 +82,11 @@ h1 {
   border: 3px solid #a34848;
   color: #a34848;
   background-color: #f0d8d8;
+}
+.draw {
+  border: 3px solid #999;
+  color: #999;
+  background-color: #f0f0f0;
 }
 .footer {
   padding: 20px 0;

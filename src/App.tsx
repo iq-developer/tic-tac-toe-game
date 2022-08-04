@@ -7,10 +7,12 @@ import randomInteger from './helpers/randomInteger';
 import checkWin from './helpers/checkWin';
 import fullscreen from './helpers/fullscreen';
 import { StateType } from './helpers/types';
+import { MdFullscreen } from "react-icons/md";
 
 
 const App = () => {
   const [message, setMessage]: [string, (message: string) => void] = useState('Play again');
+  const [isStarted, setStarted]: [boolean, (isStarted: any) => void] = useState(false);
   const [isFinished, setIsFinished]: [boolean, (isFinished: any) => void] = useState(false); //TODO: change any to boolean
   const [state, setState]: [StateType, (state: StateType) => void] = useState(data());
   const [isRobotStep, setIsRobotStep]: [boolean, (isRobotStep: any) => void] = useState(false); //TODO: change any to boolean
@@ -30,7 +32,7 @@ const App = () => {
       const emptyCells: StateType = state.filter(item => !item.value);
 
       if (!emptyCells.length) {
-        setMessageClassName('loose');
+        setMessageClassName('draw');
         setMessage('Draw - nobody wins. Play again?');
         setIsFinished(true);
       } else {
@@ -70,7 +72,7 @@ const App = () => {
       <div className="header">
         <h1>Tic-tac-toe React game</h1>
       </div>
-      <div id="btnfullscreen" onClick={fullscreen}>Fullscreen on/off</div>
+      <div id="btnfullscreen" onClick={fullscreen}><MdFullscreen /> Fullscreen on/off</div>
       <div id="message" className={messageClassName} onClick={() => playAgain(state)}>{message}</div>
       <div className="field">
         <Buttons
